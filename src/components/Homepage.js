@@ -14,7 +14,8 @@ export default function Homepage() {
   const [todo, setTodo] = useState({
     task: "",       // Task title
     description: "", // Task description
-    uidd: ""         // Unique identifier
+    uidd: "" ,
+    optionValue:""        // Unique identifier
   });
   const [todos, setTodos] = useState([]);
   const [isEdit, setIsEdit] = useState(false);
@@ -56,13 +57,15 @@ export default function Homepage() {
     set(ref(db, `/${auth.currentUser.uid}/${uidd}`), {
       task: todo.task,
       description: todo.description,
-      uidd: uidd
+      uidd: uidd,
+      optionValue:todo.optionValue
     });
 
     setTodo({
       task: "",
       description: "",
-      uidd: ""
+      uidd: "",
+      optionValue:""
     });
   };
 
@@ -74,6 +77,7 @@ export default function Homepage() {
       task: task.task,
       description: task.description, // Set the description for the specific task
       uidd: task.uidd,
+      optionValue:task.optionValue
     });
   };
 
@@ -93,6 +97,9 @@ export default function Homepage() {
   const handleDelete = (uid) => {
     remove(ref(db, `/${auth.currentUser.uid}/${uid}`));
   };
+  const colorchanger=()=>{
+    console.log("ok")
+  }
 
   return (
     <div className="homepage">
@@ -112,12 +119,21 @@ export default function Homepage() {
           value={todo.description}
           onChange={(e) => setTodo({ ...todo, description: e.target.value })}
         />
+        <div className="select">
+          <label htmlFor="">Completed </label>
+        <select value={todo.optionValue} onChange={(e) => setTodo({ ...todo, optionValue: e.target.value })}>
+        <option value="No" >No</option>
+        <option value="Yes">Yes</option>
+        
+      </select>
+        </div>
         <AddIcon onClick={writeToDatabase} className="add-button" />
       </div>
 
 
       {todos.map((task) => (
-        <div className="todo" key={task.uidd}>
+        <div className={task.optionValue == 'Yes' ? 'yestodo' : 'notodo'} key={task.uidd}>
+           
           <h1>{task.task}</h1>
           <EditIcon
             fontSize="large"

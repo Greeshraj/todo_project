@@ -8,12 +8,18 @@
   flex-direction: column;
   position: relative;
 }
+.select{
+  margin-left: 10px;
+}
 
 @media (min-width: 651px) {
   .todo2 {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    /* border: 2px solid red; */
+    border-radius: 10px;
+    /* background-color: #1b0505; */
   }
 
   .add-edit-input {
@@ -30,17 +36,34 @@
       margin-left: 10px;
     }
 
-  .todo {
+  .yestodo {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
     margin-bottom: 10px;
+    border: 3px solid black;
+    background-color: rgb(30, 189, 30);
   }
 
-  .todo > h1 {
+  .yestodo > h1 {
     width: 500px;
-    background-color: rgb(211, 211, 211);
+    /* background-color: rgb(211, 211, 211); */
+    padding: 5px 10px;
+  }
+  .notodo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+    border: 3px solid black;
+    background-color: rgba(219, 54, 54, 0.767);
+  }
+
+  .notodo > h1 {
+    width: 500px;
+    /* background-color: rgb(211, 211, 211); */
     padding: 5px 10px;
   }
     .edit-button,
@@ -67,19 +90,28 @@
     flex: 1;
   }
 
-  .todo {
+  .yestodo {
     align-items: center;
     justify-content: center;
     flex-direction: row;
     margin-bottom: 10px;
   }
-
-  .todo>h1 {
+  .notodo {
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  .yestodo>h1 {
     width: 250px;
     background-color: rgb(211, 211, 211);
     padding: 1px 1px;
   }
-
+  .notodo>h1 {
+    width: 250px;
+    background-color: rgb(211, 211, 211);
+    padding: 1px 1px;
+  }
     .edit-button{
       content: "\a";
       transform: scale(1);
